@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kites</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <section class="brand vintage-brand">
+          <img class="brand-ticket" src="./assets/KitsLogo3.0.png" alt="Kites Personal Email Service vintage envelope logo" />
+        </section>
+
+        <section class="account-card" aria-label="Account">
+          <div>
+            <span class="eyebrow">Workspace</span>
+            <strong id="workspaceName">Personal</strong>
+          </div>
+          <div class="account-switcher" role="group" aria-label="Account">
+            <button class="segmented active" data-account="personal">Personal</button>
+            <button class="segmented" data-account="business">Business</button>
+          </div>
+        </section>
+
+        <nav class="folders" aria-label="Folders">
+          <button class="folder active" data-folder="inbox"><span>Inbox</span><strong id="inboxCount">0</strong></button>
+          <button class="folder" data-folder="starred"><span>Starred</span><strong id="starCount">0</strong></button>
+          <button class="folder" data-folder="sent"><span>Sent</span><strong id="sentCount">0</strong></button>
+          <button class="folder" data-folder="drafts"><span>Drafts</span><strong id="draftCount">0</strong></button>
+          <button class="folder" data-folder="archive"><span>Archive</span><strong id="archiveCount">0</strong></button>
+          <button class="folder" data-folder="spam"><span>Spam</span><strong id="spamCount">0</strong></button>
+          <button class="folder" data-folder="trash"><span>Trash</span><strong id="trashCount">0</strong></button>
+        </nav>
+
+        <section class="labels-panel" aria-label="Labels">
+          <h2>Labels</h2>
+          <button class="label-filter active" data-label="all">All mail</button>
+          <button class="label-filter" data-label="private">Private</button>
+          <button class="label-filter" data-label="work">Work</button>
+          <button class="label-filter" data-label="finance">Finance</button>
+          <button class="label-filter" data-label="travel">Travel</button>
+        </section>
+
+        <section class="privacy-panel" aria-label="Privacy controls">
+          <h2>Discretion</h2>
+          <label class="toggle">
+            <input id="privateMode" type="checkbox" checked />
+            <span>Private mode</span>
+          </label>
+          <label class="toggle">
+            <input id="receiptBlock" type="checkbox" checked />
+            <span>Block receipts</span>
+          </label>
+          <label class="toggle">
+            <input id="signatureLock" type="checkbox" />
+            <span>Signature lock</span>
+          </label>
+        </section>
+      </aside>
+
+      <section class="main-area">
+        <header class="topbar">
+          <nav class="app-tabs" aria-label="Kites sections">
+            <button class="tab active" data-view="mail">Mail</button>
+            <button class="tab" data-view="contacts">Contacts</button>
+            <button class="tab" data-view="drive">Drive</button>
+            <button class="tab" data-view="images">Images</button>
+            <button class="tab" data-view="settings">Settings</button>
+            <button class="tab" data-view="access">Access</button>
+          </nav>
+
+          <div class="topbar-actions">
+            <div class="search-wrap">
+              <span aria-hidden="true">⌕</span>
+              <input id="searchInput" type="search" placeholder="Search Kites" autocomplete="off" />
+            </div>
+            <button id="composeButton" class="primary-button">Compose</button>
+          </div>
+        </header>
+
+        <section class="view active" id="mailView" aria-label="Mail">
+          <div class="mail-column">
+            <div class="mail-toolbar">
+              <button id="checkMailButton" class="toolbar-button" type="button">Check mail</button>
+              <label class="mini-toggle">
+                <input id="unreadOnly" type="checkbox" />
+                <span>Unread</span>
+              </label>
+            </div>
+            <div class="message-list" id="messageList" aria-label="Message list"></div>
+          </div>
+          <article class="reader" id="reader">
+            <div class="empty-reader">
+              <h2>Select a conversation</h2>
+              <p>Your private discussions open here.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="view" id="contactsView" aria-label="Contacts">
+          <header class="section-head">
+            <div>
+              <span class="eyebrow">Address Book</span>
+              <h2>People Kites knows</h2>
+            </div>
+          </header>
+          <div class="contact-grid" id="contactGrid"></div>
+        </section>
+
+        <section class="view" id="driveView" aria-label="Drive">
+          <header class="section-head">
+            <div>
+              <span class="eyebrow">Kites Drive</span>
+              <h2>Your private file space</h2>
+            </div>
+            <label class="upload-button">
+              Add file
+              <input id="driveUpload" type="file" multiple />
+            </label>
+          </header>
+          <div class="drive-grid" id="driveGrid"></div>
+        </section>
+
+        <section class="view" id="imagesView" aria-label="Images">
+          <header class="section-head">
+            <div>
+              <span class="eyebrow">Image Vault</span>
+              <h2>Pictures attached to Kites</h2>
+            </div>
+            <label class="upload-button">
+              Add images
+              <input id="imageUpload" type="file" accept="image/*" multiple />
+            </label>
+          </header>
+          <div class="image-grid" id="imageGrid"></div>
+        </section>
+
+        <section class="view" id="settingsView" aria-label="Settings">
+          <header class="section-head">
+            <div>
+              <span class="eyebrow">Mailbox Settings</span>
+              <h2>Make Kites behave like yours</h2>
+            </div>
+          </header>
+          <form id="settingsForm" class="settings-form">
+            <label class="toggle">
+              <input id="defaultConfidential" type="checkbox" checked />
+              <span>Mark new messages confidential by default</span>
+            </label>
+            <label class="toggle">
+              <input id="vacationEnabled" type="checkbox" />
+              <span>Vacation responder</span>
+            </label>
+            <label>
+              Signature
+              <textarea id="signatureText" rows="4" placeholder="Your sign-off"></textarea>
+            </label>
+            <label>
+              Vacation response
+              <textarea id="vacationText" rows="4" placeholder="Thanks for your message. I will reply soon."></textarea>
+            </label>
+            <button class="primary-button" type="submit">Save settings</button>
+          </form>
+        </section>
+
+        <section class="view" id="accessView" aria-label="Access">
+          <header class="section-head">
+            <div>
+              <span class="eyebrow">Private Access</span>
+              <h2>See Kites from your other computer</h2>
+            </div>
+          </header>
+          <div class="access-grid">
+            <article class="access-card recommended">
+              <span class="eyebrow">Best private option</span>
+              <h3>Tailscale Serve</h3>
+              <p>Keep Kites off the public internet and open it only from devices signed into your private tailnet.</p>
+              <code>http://localhost:8788</code>
+            </article>
+            <article class="access-card">
+              <span class="eyebrow">Same Wi-Fi</span>
+              <h3>Local network</h3>
+              <p>Run Kites on this PC, then open the computer IP and port from another device on the same network.</p>
+              <code>http://YOUR-PC-IP:8788</code>
+            </article>
+            <article class="access-card">
+              <span class="eyebrow">Public web later</span>
+              <h3>Domain + DNS</h3>
+              <p>Real internet email needs a public domain and mail DNS records. Keep this private until you want that.</p>
+              <code>MX · SPF · DKIM · DMARC</code>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="composeDialog">
+      <form id="composeForm" method="dialog" class="compose-form">
+        <header>
+          <h2 id="composeTitle">New message</h2>
+          <button type="button" id="closeCompose" class="icon-button" aria-label="Close">×</button>
+        </header>
+        <label>
+          To
+          <input name="to" type="text" placeholder="name@example.com, team@example.com" required />
+        </label>
+        <div class="compose-row">
+          <label>
+            Cc
+            <input name="cc" type="text" placeholder="Optional" />
+          </label>
+          <label>
+            Bcc
+            <input name="bcc" type="text" placeholder="Optional" />
+          </label>
+        </div>
+        <label>
+          Subject
+          <input name="subject" type="text" placeholder="Subject" required />
+        </label>
+        <div class="compose-row">
+          <label>
+            Priority
+            <select name="priority">
+              <option>Normal</option>
+              <option>High</option>
+              <option>Low</option>
+            </select>
+          </label>
+          <label>
+            Label
+            <select name="label">
+              <option value="">None</option>
+              <option value="private">Private</option>
+              <option value="work">Work</option>
+              <option value="finance">Finance</option>
+              <option value="travel">Travel</option>
+            </select>
+          </label>
+        </div>
+        <label>
+          Message
+          <textarea name="body" rows="8" placeholder="Write your message..." required></textarea>
+        </label>
+        <label>
+          Attachments
+          <input id="composeAttachments" name="attachments" type="file" multiple />
+        </label>
+        <div class="attachment-list" id="attachmentPreview"></div>
+        <div class="compose-actions">
+          <label class="checkbox-line">
+            <input name="confidential" type="checkbox" checked />
+            Confidential
+          </label>
+          <div class="button-row">
+            <button id="saveDraftButton" class="secondary-button" type="button">Save draft</button>
+            <button class="primary-button" type="submit">Send</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1123 @@
+:root {
+  color-scheme: dark;
+  --ink: #f7fbff;
+  --muted: #94a7ba;
+  --line: rgba(160, 183, 255, 0.18);
+  --paper: #070a12;
+  --panel: rgba(14, 20, 35, 0.86);
+  --panel-strong: #111827;
+  --glass: rgba(255, 255, 255, 0.055);
+  --cyan: #40e0ff;
+  --mint: #4cffb5;
+  --violet: #a77bff;
+  --rose: #ff5f9e;
+  --gold: #ffd166;
+  --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(64, 224, 255, 0.18), transparent 32vw),
+    radial-gradient(circle at 85% 20%, rgba(255, 95, 158, 0.13), transparent 30vw),
+    linear-gradient(135deg, #070a12 0%, #0c1020 52%, #090d16 100%);
+  color: var(--ink);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+textarea {
+  color: var(--ink);
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 430px minmax(0, 1fr);
+  min-height: 100vh;
+  padding: 14px;
+  gap: 14px;
+}
+
+.sidebar,
+.main-area,
+dialog {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+}
+
+.sidebar {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  gap: 18px;
+  border-radius: 18px;
+  padding: 18px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.sidebar::before,
+.main-area::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(145deg, rgba(64, 224, 255, 0.7), transparent 28%, rgba(255, 95, 158, 0.45));
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+.brand {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.vintage-brand {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.brand-ticket {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2048 / 1091;
+  object-fit: contain;
+  border: 0;
+  border-radius: 10px;
+  background: #11100d;
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.32),
+    0 0 32px rgba(255, 95, 158, 0.12);
+}
+
+.brand-mark {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(64, 224, 255, 0.24), rgba(255, 95, 158, 0.18)),
+    #172033;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 0 32px rgba(64, 224, 255, 0.22);
+}
+
+.logo-envelope {
+  position: relative;
+  width: 38px;
+  height: 27px;
+  border: 1px solid rgba(247, 251, 255, 0.78);
+  border-radius: 6px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), transparent 45%),
+    rgba(7, 10, 18, 0.66);
+  box-shadow: inset 0 0 18px rgba(64, 224, 255, 0.12);
+}
+
+.logo-envelope::before,
+.logo-envelope::after,
+.logo-flap {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.logo-envelope::before,
+.logo-envelope::after {
+  bottom: 0;
+  width: 22px;
+  height: 1px;
+  background: rgba(247, 251, 255, 0.55);
+  transform-origin: bottom;
+}
+
+.logo-envelope::before {
+  left: 0;
+  transform: rotate(-38deg);
+}
+
+.logo-envelope::after {
+  right: 0;
+  transform: rotate(38deg);
+}
+
+.logo-flap {
+  inset: 0;
+  background:
+    linear-gradient(142deg, transparent 48%, rgba(247, 251, 255, 0.62) 49%, transparent 51%),
+    linear-gradient(218deg, transparent 48%, rgba(247, 251, 255, 0.62) 49%, transparent 51%);
+}
+
+.logo-kite {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  width: 15px;
+  height: 15px;
+  background: linear-gradient(135deg, var(--cyan), var(--mint));
+  clip-path: polygon(50% 0, 100% 44%, 54% 100%, 0 46%);
+  filter: drop-shadow(0 0 8px rgba(64, 224, 255, 0.55));
+  transform: rotate(8deg);
+}
+
+.logo-kite::before {
+  position: absolute;
+  content: "";
+  inset: 2px;
+  clip-path: polygon(50% 0, 55% 100%, 48% 100%, 46% 0);
+  background: rgba(7, 10, 18, 0.28);
+}
+
+.logo-tail {
+  position: absolute;
+  left: 17px;
+  top: 18px;
+  width: 13px;
+  height: 9px;
+  border-bottom: 1px solid var(--mint);
+  border-left: 1px solid transparent;
+  border-radius: 0 0 0 12px;
+  transform: rotate(-10deg);
+}
+
+.logo-tail::before,
+.logo-tail::after {
+  position: absolute;
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 1px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.logo-tail::before {
+  left: 3px;
+  top: 3px;
+}
+
+.logo-tail::after {
+  left: 9px;
+  top: 5px;
+  background: var(--rose);
+}
+
+.logo-stamp {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 9px;
+  height: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 2px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.62) 0 1px, transparent 2px),
+    linear-gradient(135deg, var(--violet), var(--rose));
+  box-shadow: 0 0 9px rgba(255, 95, 158, 0.34);
+}
+
+.brand h1,
+.brand p,
+.privacy-panel h2,
+.labels-panel h2,
+.reader h2,
+.thread-message p,
+.section-head h2,
+.access-card h3,
+.file-card p,
+.image-card p,
+.contact-card p {
+  margin: 0;
+}
+
+.brand h1 {
+  font-size: 26px;
+  letter-spacing: 0;
+}
+
+.brand p,
+.privacy-panel,
+.meta,
+.empty-reader p,
+.access-card p,
+.file-card p,
+.image-card p {
+  color: var(--muted);
+}
+
+.account-card,
+.privacy-panel,
+.labels-panel,
+.access-card,
+.file-card,
+.image-card,
+.contact-card,
+.thread-message {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--glass);
+}
+
+.account-card {
+  display: grid;
+  gap: 14px;
+  padding: 14px;
+}
+
+.eyebrow {
+  display: block;
+  color: var(--cyan);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#workspaceName {
+  display: block;
+  margin-top: 4px;
+  font-size: 22px;
+}
+
+.account-switcher {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.segmented,
+.folder,
+.icon-button,
+.tab,
+.reader-actions button {
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+}
+
+.segmented {
+  min-height: 38px;
+  border-radius: 9px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.segmented.active {
+  background: linear-gradient(135deg, var(--cyan), var(--mint));
+  color: #041018;
+}
+
+.segmented[data-account="business"].active {
+  background: linear-gradient(135deg, var(--violet), var(--rose));
+  color: white;
+}
+
+.folders {
+  display: grid;
+  gap: 8px;
+}
+
+.folder {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  padding: 0 13px;
+  text-align: left;
+}
+
+.folder.active,
+.folder:hover {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.folder strong {
+  min-width: 28px;
+  border-radius: 999px;
+  background: rgba(64, 224, 255, 0.14);
+  color: var(--cyan);
+  font-size: 12px;
+  line-height: 26px;
+  text-align: center;
+}
+
+.privacy-panel,
+.labels-panel {
+  display: grid;
+  gap: 13px;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.labels-panel {
+  gap: 8px;
+}
+
+.privacy-panel {
+  margin-top: auto;
+}
+
+.privacy-panel h2,
+.labels-panel h2 {
+  color: var(--ink);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.label-filter {
+  min-height: 34px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--muted);
+  padding: 0 10px;
+  text-align: left;
+}
+
+.label-filter.active,
+.label-filter:hover {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--ink);
+}
+
+.toggle,
+.checkbox-line {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.toggle input,
+.checkbox-line input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--cyan);
+}
+
+.main-area {
+  position: relative;
+  display: grid;
+  grid-template-rows: 82px minmax(0, 1fr);
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+.topbar {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  padding: 14px 16px;
+  background: rgba(8, 12, 22, 0.42);
+}
+
+.app-tabs {
+  display: flex;
+  min-width: max-content;
+  gap: 8px;
+  align-items: center;
+}
+
+.tab {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 16px;
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.tab.active {
+  border-color: rgba(64, 224, 255, 0.45);
+  background: rgba(64, 224, 255, 0.12);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px rgba(64, 224, 255, 0.16), 0 0 24px rgba(64, 224, 255, 0.14);
+}
+
+.topbar-actions {
+  display: flex;
+  width: min(720px, 100%);
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.search-wrap {
+  display: flex;
+  width: min(500px, 100%);
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0 12px;
+  background: rgba(0, 0, 0, 0.18);
+  color: var(--muted);
+}
+
+.search-wrap input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+.primary-button,
+.upload-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--cyan), var(--mint));
+  color: #041018;
+  padding: 0 18px;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.primary-button:hover,
+.upload-button:hover {
+  filter: brightness(1.08);
+}
+
+.upload-button input {
+  display: none;
+}
+
+.view {
+  display: none;
+  min-height: 0;
+  overflow: auto;
+}
+
+.view.active {
+  display: grid;
+}
+
+#mailView {
+  grid-template-columns: minmax(320px, 430px) minmax(0, 1fr);
+}
+
+.message-list {
+  overflow: auto;
+  border-right: 1px solid var(--line);
+  background: rgba(5, 8, 16, 0.28);
+}
+
+.message-row {
+  display: grid;
+  gap: 9px;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  padding: 17px 18px;
+  text-align: left;
+}
+
+.message-row:hover,
+.message-row.active {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.message-row.active {
+  box-shadow: inset 3px 0 0 var(--cyan);
+}
+
+.message-row.unread .sender,
+.message-row.unread .subject {
+  font-weight: 900;
+}
+
+.row-top,
+.reader-actions,
+.compose-actions,
+.thread-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.subject {
+  color: var(--ink);
+}
+
+.preview,
+.meta {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.badge {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 24px;
+  align-items: center;
+  border-radius: 999px;
+  background: rgba(64, 224, 255, 0.14);
+  color: var(--cyan);
+  padding: 0 9px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.badge.business {
+  color: #d8ccff;
+  background: rgba(167, 123, 255, 0.16);
+}
+
+.badge.alert {
+  color: #ffd4e5;
+  background: rgba(255, 95, 158, 0.17);
+}
+
+.reader {
+  overflow: auto;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 42%);
+  padding: 28px;
+}
+
+.empty-reader {
+  display: grid;
+  min-height: 100%;
+  place-content: center;
+  gap: 8px;
+  padding: 28px;
+  text-align: center;
+}
+
+.reader-header {
+  display: grid;
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 22px;
+}
+
+.reader-header h2 {
+  max-width: 880px;
+  font-size: clamp(28px, 4vw, 54px);
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.reader-actions button {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0 12px;
+}
+
+.thread {
+  display: grid;
+  gap: 14px;
+  padding-top: 22px;
+}
+
+.thread-message {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+}
+
+.thread-message.private {
+  border-color: rgba(64, 224, 255, 0.32);
+  background: rgba(64, 224, 255, 0.075);
+}
+
+.thread-meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+#driveView,
+#imagesView,
+#accessView {
+  align-content: start;
+  gap: 18px;
+  padding: 24px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.section-head h2 {
+  margin-top: 5px;
+  font-size: clamp(25px, 3vw, 42px);
+  letter-spacing: 0;
+}
+
+.drive-grid,
+.image-grid,
+.access-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+.file-card,
+.image-card,
+.access-card {
+  position: relative;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.file-card::before,
+.image-card::before,
+.access-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--rose), var(--gold));
+}
+
+.file-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 13px;
+  background: rgba(64, 224, 255, 0.13);
+  color: var(--cyan);
+  font-weight: 950;
+}
+
+.file-card {
+  display: grid;
+  gap: 12px;
+}
+
+.file-card h3,
+.image-card h3,
+.access-card h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.image-card {
+  display: grid;
+  gap: 12px;
+}
+
+.image-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.access-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.access-card {
+  display: grid;
+  gap: 12px;
+  min-height: 220px;
+}
+
+.access-card.recommended {
+  border-color: rgba(64, 224, 255, 0.36);
+  background: rgba(64, 224, 255, 0.075);
+}
+
+.access-card code {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.28);
+  color: var(--mint);
+  padding: 10px;
+}
+
+dialog {
+  width: min(680px, calc(100vw - 28px));
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 0;
+}
+
+dialog::backdrop {
+  background: rgba(3, 6, 12, 0.7);
+}
+
+.compose-form {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+}
+
+.compose-form header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.compose-form h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.icon-button {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  font-size: 24px;
+}
+
+.icon-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.compose-form label:not(.checkbox-line) {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.compose-form input[type="text"],
+.compose-form input[type="email"],
+.compose-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.23);
+  padding: 12px;
+}
+
+.compose-form textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+@media (max-width: 1060px) {
+  body {
+    overflow: auto;
+  }
+
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    min-height: auto;
+  }
+
+  .privacy-panel {
+    margin-top: 0;
+  }
+
+  .main-area {
+    min-height: 860px;
+  }
+
+  .access-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .app-tabs {
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .topbar-actions,
+  .section-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .search-wrap,
+  .primary-button,
+  .upload-button {
+    width: 100%;
+  }
+
+  #mailView {
+    grid-template-columns: 1fr;
+  }
+
+  .message-list {
+    max-height: 360px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 500px) {
+  .app-shell {
+    padding: 8px;
+  }
+
+  .sidebar,
+  .main-area {
+    border-radius: 14px;
+  }
+
+  .reader,
+  #driveView,
+  #imagesView,
+  #accessView {
+    padding: 16px;
+  }
+}
+
+.toolbar-button,
+.secondary-button {
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+}
+
+.mail-column {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 0;
+  border-right: 1px solid var(--line);
+}
+
+.mail-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding: 12px;
+  background: rgba(5, 8, 16, 0.34);
+}
+
+.toolbar-button,
+.secondary-button {
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0 12px;
+  font-weight: 850;
+}
+
+.toolbar-button:hover,
+.secondary-button:hover,
+.reader-actions button:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.mini-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.mini-toggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--cyan);
+}
+
+.message-list {
+  border-right: 0;
+}
+
+.label-strip,
+.attachment-list,
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.attachment-pill,
+.contact-chip {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.055);
+  color: var(--muted);
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+#contactsView,
+#settingsView {
+  align-content: start;
+  gap: 18px;
+  padding: 24px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+.contact-card {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--glass);
+  padding: 16px;
+}
+
+.contact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--rose), var(--gold));
+}
+
+.contact-card h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.contact-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.contact-avatar {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(64, 224, 255, 0.28), rgba(255, 95, 158, 0.2));
+  color: var(--ink);
+  font-weight: 950;
+}
+
+.compose-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.compose-form input[type="file"],
+.compose-form select,
+.settings-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.23);
+  padding: 12px;
+}
+
+.settings-form {
+  display: grid;
+  gap: 16px;
+  max-width: 760px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--glass);
+  padding: 18px;
+}
+
+.settings-form label:not(.toggle) {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.settings-form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.settings-form .primary-button {
+  width: fit-content;
+}
+
+@media (max-width: 760px) {
+  .mail-column {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .compose-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  #contactsView,
+  #settingsView {
+    padding: 16px;
+  }
+}
